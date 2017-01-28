@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     rigger = require('gulp-rigger'),
+    include = require("gulp-include"),
     cssmin = require('gulp-clean-css'),
     imagemin = require('gulp-imagemin'),
     rimraf = require('rimraf'),
@@ -64,7 +65,7 @@ gulp.task('html:build', function () {
 
 gulp.task('js:build', function () {
     gulp.src(path.src.js) 
-        .pipe(rigger()) 
+        .pipe(include()) 
         .pipe(uglify()) 
         .pipe(gulp.dest(path.build.js))
         .pipe(reload({stream: true}));
